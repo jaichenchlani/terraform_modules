@@ -5,7 +5,12 @@ variable "project" {
 
 variable "name" { 
     type            = string
-    default         = "server1"
+    default         = "instance-template-1"
+}
+
+variable "description" { 
+    type            = string
+    default         = "Instance template with Persistent Disk."
 }
 
 variable "zone" { 
@@ -38,13 +43,11 @@ variable "environment" {
     default         = "dev"
 }
 
+variable "disk" {
+    type            = string
+    default         = "disk-1"
+}
 variable "network_tags" {
     type            = list
     default         = null
-}
-
-variable "auto_delete" {
-    type = bool
-    description = "Whether or not the disk should be auto-deleted. Default is False."
-    default = true
 }

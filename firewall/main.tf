@@ -1,13 +1,13 @@
 resource "google_compute_firewall" "default" {
   name    = var.name
   network = var.network
-  description = "Creates firewall rule targeting tagged instances"
+  description = var.description
 
   allow {
-    protocol = "tcp"
-    ports    = ["80", "443"]
+    protocol = var.protocol
+    ports    = var.ports
   }
 
-  source_ranges = ["0.0.0.0/0"]
-  target_tags   = ["web"]
+  source_ranges = var.source_ranges
+  target_tags   = var.target_tags
 }

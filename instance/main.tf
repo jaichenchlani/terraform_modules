@@ -4,7 +4,7 @@ resource "google_compute_instance" "default" {
     zone = var.zone
     can_ip_forward = false
     metadata_startup_script = var.startup_script
-    tags = ["web-server"] # Allow http traffic
+    tags = var.network_tags # Allow http traffic
 
     boot_disk {
         auto_delete = var.auto_delete
