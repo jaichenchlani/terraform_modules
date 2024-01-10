@@ -3,11 +3,11 @@ resource "google_compute_instance" "default" {
     machine_type = var.machine_type
     zone = var.zone
     can_ip_forward = false
-    metadata_startup_script = var.startup_script
-    tags = var.network_tags # Allow http traffic
+    metadata_startup_script = var.metadata_startup_script
+    tags = var.tags 
 
     boot_disk {
-        auto_delete = var.auto_delete
+        auto_delete = lookup(boot_disk.value, "auto_delete", true)
         initialize_params {
           image = var.image
           size = "20"
